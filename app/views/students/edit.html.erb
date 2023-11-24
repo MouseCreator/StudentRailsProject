@@ -1,3 +1,52 @@
 <html>
-  <h1>Wow! Cool editor, even though it is empty!</h1>
+<h1>Edit Student</h1>
+
+<%= form_for @student do |form| %>
+  <% if @student.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@student.errors.count, "error") %> prohibited this student from being saved:</h2>
+      <ul>
+        <% @student.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :age %>
+    <%= form.number_field :age %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dorm %>
+    <%= form.check_box :dorm %>
+  </div>
+
+  <div class="field">
+    <%= form.label :language %>
+    <%= form.text_field :language %>
+  </div>
+
+  <div class="field">
+    <%= form.label :teacher %>
+    <%= form.check_box :teacher %>
+  </div>
+
+  <div class="field">
+    <%= form.label :university %>
+    <%= form.text_field :university %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Update Student' %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', student_path(@student) %>
 </html>

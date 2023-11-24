@@ -3,5 +3,7 @@
     <% @students.each do |s| %>
       <li><%= link_to s.name, s %></li>
     <% end %>
+
+    <%= link_to 'Create New Student', new_student_path, class: 'btn' %>
   </ul>
 </h1>

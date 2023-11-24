@@ -9,7 +9,7 @@ class StudentsController < ApplicationController
   end
 
   def create
-    @student = Student.create(student_params)
+    @student = Student.new(student_params)
     if @student.save
       redirect_to '/index'
     else
@@ -27,24 +27,23 @@ class StudentsController < ApplicationController
 
   def update
     @student = Student.find(params[:id])
-    @student.update_attributes(params[:student])
-    if @student.errors.empty?
-      redirect_to @student
+    if @student.update(student_params)
+      redirect_to students_path, notice: 'Student was successfully updated.'
     else
-      render "edit"
+      render :edit
     end
   end
 
   def destroy
     @student = Student.find(params[:id])
     @student.destroy
-    redirect_to '/index'
+    redirect_to students_path
   end
 
 
   private
   def student_params
-    params[:student]
+    params.require(:student).permit(:name, :age, :dorm, :language, :teacher, :university)
   end
 
 
