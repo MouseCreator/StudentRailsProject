@@ -16,10 +16,6 @@ class StudentsController < ApplicationController
       render '/new'
     end
   end
-  private
-  def student_params
-    params[:student]
-  end
 
   def show
     @student = Student.find(params[:id])
@@ -44,4 +40,12 @@ class StudentsController < ApplicationController
     @student.destroy
     redirect_to '/index'
   end
+
+
+  private
+  def student_params
+    params[:student]
+  end
+
+
 end

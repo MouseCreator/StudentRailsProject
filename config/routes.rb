@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   get 'show/:id', to: "students#show", as: :student
   # Defines the root path route ("/")
   root "students#index"
+
+  resources :students
 end
