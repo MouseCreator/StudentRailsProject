@@ -1,5 +1,6 @@
 class StudentsController < ApplicationController
   skip_before_action :verify_authenticity_token
+  layout 'application'
   def index
     @students = Student.all
   end
