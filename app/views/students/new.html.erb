@@ -1,0 +1,41 @@
+<h1>
+  Create a new student, please!
+  <div class="create">
+    <div class="container">
+      <%= form_for(@student) do |form| %>
+        <div class="field">
+          <%= form.label :name %>
+          <%= form.text_field :name %>
+        </div>
+
+        <div class="field">
+          <%= form.label :age %>
+          <%= form.number_field :age %>
+        </div>
+
+        <div class="field">
+          <%= form.label :dorm %>
+          <%= form.check_box :dorm %>
+        </div>
+
+        <div class="field">
+          <%= form.label :language %>
+          <%= form.text_field :language %>
+        </div>
+
+        <div class="field">
+          <%= form.label :teacher %>
+          <%= form.check_box :teacher %>
+        </div>
+
+        <div class="field">
+          <%= form.label :university %>
+          <%= form.text_field :university %>
+        </div>
+        <div class="actions">
+          <%= f.submit "Create" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</h1>

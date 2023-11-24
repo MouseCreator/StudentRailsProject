@@ -10,15 +10,38 @@ class StudentsController < ApplicationController
 
   def create
     @student = Student.create(student_params)
-    if student.save
-      session[:student_id] = @student.id
-      redirect_to '/'
+    if @student.save
+      redirect_to '/index'
     else
-      redirect_to '/signup'
+      render '/new'
     end
   end
   private
   def student_params
-    params.require(:student).permit(:name,:age,:dorm,:language,:teacher,:university)
+    params[:student]
+  end
+
+  def show
+    @student = Student.find(params[:id])
+  end
+
+  def edit
+    @student = Student.find(params[:id])
+  end
+
+  def update
+    @student = Student.find(params[:id])
+    @student.update_attributes(params[:student])
+    if @student.errors.empty?
+      redirect_to @student
+    else
+      render "edit"
+    end
+  end
+
+  def destroy
+    @student = Student.find(params[:id])
+    @student.destroy
+    redirect_to '/index'
   end
 end
